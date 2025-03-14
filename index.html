@@ -3,33 +3,40 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* 背景與body設定 */
     body {
       margin: 0;
       background-color: black;
+    }
+    /* 外層容器讓內容居中 */
+    .outer-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
     }
-    /* 將圖片與彈出框包在同一個容器中 */
+    /* 內層容器以縮排包住圖片與彈出框，寬度會依圖片而定 */
     .image-container {
       position: relative;
       display: inline-block;
     }
-    img {
+    /* 圖片依據裝置大小縮放，但維持原始比例 */
+    .image-container img {
       display: block;
-      max-width: 100%;
+      max-width: 100vw;
+      max-height: 100vh;
+      width: auto;
       height: auto;
     }
-    /* 底部彈出框 */
+    /* 底部彈出框，寬度與圖片相同 */
     #linePopup {
       display: none;
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 8px 10px;
+      background-color: rgba(255,255,255,0.9);
+      padding: 6px 10px;
       box-sizing: border-box;
       font-size: 14px;
       display: flex;
@@ -38,26 +45,29 @@
     }
     /* 按鈕樣式：圓角長方形 */
     .line-button {
-      padding: 6px 12px;
+      padding: 4px 10px;
       border: 1px solid #007aff;
       border-radius: 8px;
       text-decoration: none;
       color: #007aff;
       font-weight: bold;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <div class="image-container">
-    <img src="IMG_2253.jpeg" alt="圖片">
-    <div id="linePopup">
-      <span>詳情請加官方Line諮詢👉</span>
-      <a class="line-button" href="https://line.me/R/ti/p/@226bxata" target="_blank">加入Line</a>
+  <div class="outer-container">
+    <div class="image-container">
+      <img src="IMG_2253.jpeg" alt="圖片">
+      <div id="linePopup">
+        <span>詳情請加官方Line諮詢👉</span>
+        <a class="line-button" href="https://line.me/R/ti/p/@226bxata" target="_blank">加入Line</a>
+      </div>
     </div>
   </div>
   <script>
+    // 當頁面載入完成後，2秒後顯示彈出框
     window.addEventListener('load', function() {
-      // 延遲2秒後顯示彈出框
       setTimeout(function() {
         document.getElementById('linePopup').style.display = 'flex';
       }, 2000);
