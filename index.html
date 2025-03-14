@@ -1,24 +1,62 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            background-color: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-    </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    /* 彈窗樣式 */
+    #linePopup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      z-index: 9999;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    #linePopup a {
+      color: #007aff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
-    <img src="IMG_2253.jpeg">
+  <img src="IMG_2253.jpeg" alt="圖片">
+  
+  <!-- 彈窗 -->
+  <div id="linePopup">
+    <p>點擊下方連結加入Line好友：</p>
+    <a href="https://line.me/R/ti/p/@226bxata" target="_blank">加Line好友</a>
+  </div>
+  
+  <script>
+    // 等待頁面載入完成後執行
+    window.addEventListener('load', function() {
+      // 5秒後顯示彈窗
+      setTimeout(function() {
+        document.getElementById('linePopup').style.display = 'block';
+      }, 5000);
+    });
+  </script>
 </body>
 </html>
