@@ -3,7 +3,6 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* 基本設定 */
     body {
       margin: 0;
       background-color: black;
@@ -14,7 +13,6 @@
       align-items: center;
       min-height: 100vh;
     }
-    /* 圖片容器，確保圖片與 CTA 框依裝置大小自適應 */
     .image-container {
       position: relative;
       display: inline-block;
@@ -26,7 +24,6 @@
       width: auto;
       height: auto;
     }
-    /* CTA 框預設透明，不影響排版 */
     #linePopup {
       display: flex;
       position: absolute;
@@ -39,16 +36,14 @@
       font-size: 18px;
       justify-content: center;
       align-items: center;
-      gap: 32px; /* 調整文字與按鈕之間的間距 */
+      gap: 32px;
       opacity: 0;
       transition: opacity 1s ease;
     }
-    /* 顯示 CTA 框時，改為不透明並加入 bounce 動畫 */
     #linePopup.show {
       opacity: 1;
       animation: bounce 2s infinite;
     }
-    /* Bounce 動畫定義，每週期2秒 */
     @keyframes bounce {
       0%, 100% {
         transform: translateY(0);
@@ -57,7 +52,6 @@
         transform: translateY(-10px);
       }
     }
-    /* 加入Line按鈕，採用 LINE 綠色與白色字體 */
     .line-button {
       padding: 6px 12px;
       border: 1px solid #00c300;
@@ -75,13 +69,12 @@
     <div class="image-container">
       <img src="IMG_2253.jpeg" alt="圖片">
       <div id="linePopup">
-        <span>詳情請洽天晨文教官方Line👉</span>
+        <span>詳情請洽官方Line👉</span>
         <a class="line-button" href="https://line.me/R/ti/p/@226bxata" target="_blank">加入Line</a>
       </div>
     </div>
   </div>
   <script>
-    // 頁面載入後，延遲 3000 毫秒（3 秒）再顯示 CTA 框（淡入1秒後開始 bounce 動畫）
     window.addEventListener('load', function() {
       setTimeout(function() {
         document.getElementById('linePopup').classList.add('show');
