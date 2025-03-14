@@ -14,12 +14,11 @@
       align-items: center;
       min-height: 100vh;
     }
-    /* 內層容器包住圖片與彈出框 */
+    /* 圖片容器，確保圖片與 CTA 框依裝置大小自適應 */
     .image-container {
       position: relative;
       display: inline-block;
     }
-    /* 圖片依裝置自適應縮放，保持比例 */
     .image-container img {
       display: block;
       max-width: 100vw;
@@ -27,7 +26,7 @@
       width: auto;
       height: auto;
     }
-    /* 底部彈出框，與圖片同寬 */
+    /* CTA 框初始隱藏，待出現後與圖片同寬 */
     #linePopup {
       display: none;
       position: absolute;
@@ -37,23 +36,27 @@
       background-color: rgba(255,255,255,0.9);
       padding: 8px 10px;
       box-sizing: border-box;
-      font-size: 16px;
-      /* 使用 flex 讓內容居中並靠近 */
-      display: flex;
+      font-size: 18px;
+      /* 文字與按鈕間隔增加 */
       justify-content: center;
       align-items: center;
-      gap: 8px;
+      gap: 32px;
     }
-    /* Bounce 動畫效果 */
-    @keyframes bounce {
-      0% { transform: translateY(20px); opacity: 0; }
-      50% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
+    /* 顯示 CTA 框時，設定為 flex 並加入 bounce 動畫 */
     #linePopup.show {
-      animation: bounce 0.6s ease;
+      display: flex;
+      animation: bounce 2s infinite;
     }
-    /* 加入Line按鈕，使用LINE綠色 */
+    /* Bounce 動畫定義，每週期2秒 */
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    /* 加入Line按鈕，採用 LINE 綠色與白色字體 */
     .line-button {
       padding: 6px 12px;
       border: 1px solid #00c300;
@@ -62,7 +65,7 @@
       background-color: #00c300;
       color: #ffffff;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 18px;
     }
   </style>
 </head>
@@ -77,12 +80,10 @@
     </div>
   </div>
   <script>
-    // 當頁面載入完成後，延遲 3000 毫秒（3 秒）後顯示並觸發彈出框動畫
+    // 頁面載入後，延遲 3000 毫秒（3 秒）再顯示 CTA 框
     window.addEventListener('load', function() {
       setTimeout(function() {
-        var popup = document.getElementById('linePopup');
-        popup.style.display = 'flex';
-        popup.classList.add('show');
+        document.getElementById('linePopup').classList.add('show');
       }, 3000);
     });
   </script>
