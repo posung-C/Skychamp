@@ -2,29 +2,31 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>夾娃娃遊戲</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>猜拳遊戲 - 猜贏免學費</title>
   <style>
     body {
       margin: 0;
-      background-color: #f0f0f0;
+      background-color: #f9f9f9;
       font-family: sans-serif;
     }
     .container {
-      width: 90%;
-      max-width: 500px;
-      margin: 20px auto;
+      max-width: 600px;
+      margin: 30px auto;
       text-align: center;
-    }
-    h1 {
-      margin-bottom: 10px;
-    }
-    .display {
-      border: 2px solid #ccc;
       padding: 20px;
+      border: 1px solid #ccc;
       background-color: #fff;
       border-radius: 8px;
-      min-height: 80px;
-      margin-bottom: 15px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .display {
+      margin-bottom: 20px;
+      min-height: 60px;
+      font-size: 20px;
+      line-height: 1.5;
     }
     .button {
       padding: 10px 20px;
@@ -36,83 +38,42 @@
       color: #fff;
       cursor: pointer;
     }
-    .button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
+    .button:hover {
+      background-color: #005bb5;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>夾娃娃遊戲</h1>
-    <p>剩餘次數: <span id="attempts">10</span></p>
-    <div class="display" id="resultArea">請點擊「開始遊戲」夾娃娃！</div>
-    <button class="button" id="playButton">開始遊戲</button>
-    <button class="button" id="resetButton" style="display: none;">重置遊戲</button>
+    <h1>猜拳遊戲 - 猜贏免學費</h1>
+    <div class="display" id="resultDisplay">請選擇：石頭、剪刀、布</div>
+    <button class="button" onclick="play('石頭')">石頭</button>
+    <button class="button" onclick="play('剪刀')">剪刀</button>
+    <button class="button" onclick="play('布')">布</button>
   </div>
 
   <script>
-    // 遊戲初始次數
-    let attempts = 10;
-    const attemptsEl = document.getElementById('attempts');
-    const resultArea = document.getElementById('resultArea');
-    const playButton = document.getElementById('playButton');
-    const resetButton = document.getElementById('resetButton');
-
-    // 中文數字對照表：1~9折
-    const cnNumbers = ["一", "二", "三", "四", "五", "六", "七", "八", "九"];
-
-    // 使用權重隨機，權重 = 折率（1~9）
-    function weightedRandom() {
-      const weights = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-      const total = weights.reduce((sum, w) => sum + w, 0);
-      let rand = Math.random() * total;
-      let cumulative = 0;
-      for (let i = 0; i < weights.length; i++) {
-        cumulative += weights[i];
-        if (rand < cumulative) {
-          return i + 1; // 傳回 1~9 之間的數字，代表「折」
+    function play(userChoice) {
+      const choices = ['石頭', '剪刀', '布'];
+      const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+      let result = '';
+      
+      // 決定勝負：石頭勝剪刀、剪刀勝布、布勝石頭
+      if(userChoice === computerChoice) {
+        result = '平手！再試一次。';
+      } else {
+        if(userChoice === '石頭') {
+          result = (computerChoice === '剪刀') ? '你贏了！免學費！' : '你輸了，請再試一次。';
+        } else if(userChoice === '剪刀') {
+          result = (computerChoice === '布') ? '你贏了！免學費！' : '你輸了，請再試一次。';
+        } else if(userChoice === '布') {
+          result = (computerChoice === '石頭') ? '你贏了！免學費！' : '你輸了，請再試一次。';
         }
       }
+      
+      document.getElementById('resultDisplay').innerHTML = 
+        `你的選擇：${userChoice} <br> 電腦的選擇：${computerChoice} <br> ${result}`;
     }
-
-    // 遊戲流程
-    function playGame() {
-      if (attempts <= 0) {
-        resultArea.textContent = "次數已用完，請重置遊戲。";
-        playButton.disabled = true;
-        return;
-      }
-      // 扣除一次機會
-      attempts--;
-      attemptsEl.textContent = attempts;
-      resultArea.textContent = "夾娃娃中……";
-      playButton.disabled = true;
-
-      // 模擬夾娃娃過程，1 秒後顯示結果
-      setTimeout(() => {
-        const discount = weightedRandom(); // 取得折率數字 1~9
-        const discountText = cnNumbers[discount - 1]; // 轉換為中文數字
-        const prize = `學費${discountText}折卷`;
-        resultArea.textContent = `恭喜你夾到 ${prize}！`;
-        playButton.disabled = false;
-        // 若次數用完，顯示重置按鈕
-        if (attempts === 0) {
-          playButton.disabled = true;
-          resetButton.style.display = "inline-block";
-        }
-      }, 1000);
-    }
-
-    playButton.addEventListener('click', playGame);
-
-    resetButton.addEventListener('click', () => {
-      attempts = 10;
-      attemptsEl.textContent = attempts;
-      resultArea.textContent = "請點擊「開始遊戲」夾娃娃！";
-      playButton.disabled = false;
-      resetButton.style.display = "none";
-    });
   </script>
 </body>
 </html>
