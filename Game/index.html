@@ -41,20 +41,6 @@
     .button:hover {
       background-color: #005bb5;
     }
-    /* Loading spinner 樣式 */
-    .spinner {
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid #007aff;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      animation: spin 1s linear infinite;
-      margin: 20px auto;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
   </style>
 </head>
 <body>
@@ -71,10 +57,23 @@
       const choices = ['石頭', '剪刀', '布'];
       const computerChoice = choices[Math.floor(Math.random() * choices.length)];
       let result = '';
-
+      
       // 決定勝負：石頭勝剪刀、剪刀勝布、布勝石頭
-      if (userChoice === computerChoice) {
+      if(userChoice === computerChoice) {
         result = '平手！再試一次。';
       } else {
-        if (userChoice === '石頭') {
- 
+        if(userChoice === '石頭') {
+          result = (computerChoice === '剪刀') ? '你贏了！免學費！' : '你輸了，請付雙倍學費。';
+        } else if(userChoice === '剪刀') {
+          result = (computerChoice === '布') ? '你贏了！免學費！' : '你輸了，請付雙倍學費。';
+        } else if(userChoice === '布') {
+          result = (computerChoice === '石頭') ? '你贏了！免學費！' : '你輸了，請付雙倍學費。';
+        }
+      }
+      
+      document.getElementById('resultDisplay').innerHTML = 
+        `你的選擇：${userChoice} <br> 電腦的選擇：${computerChoice} <br> ${result}`;
+    }
+  </script>
+</body>
+</html>
