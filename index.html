@@ -10,6 +10,7 @@
 
   gtag('config', 'G-HHGSDVTF5R');
   </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -78,16 +79,25 @@
     <div class="image-container">
       <img src="IMG_031601.jpg" alt="圖片">
       <div id="linePopup">
-        <span>歡迎洽詢達陽英文官方Line👉</span>
-        <a class="line-button" href="https://line.me/R/ti/p/@226bxata" target="_blank">加入Line</a>
+        <span>歡迎洽詢達陽英文官方 Line 👉</span>
+        <a class="line-button" href="https://line.me/R/ti/p/@226bxata" target="_blank" id="cta-button">加入 Line</a>
       </div>
     </div>
   </div>
+
   <script>
     window.addEventListener('load', function() {
       setTimeout(function() {
         document.getElementById('linePopup').classList.add('show');
       }, 3000);
+    });
+
+    document.getElementById("cta-button").addEventListener("click", function() {
+      gtag('event', 'cta_click', {
+        'event_category': 'CTA',
+        'event_label': '加入 Line 按鈕',
+        'value': 1
+      });
     });
   </script>
 </body>
@@ -96,5 +106,5 @@
 <!--
 Keystone Chiang 
 2025-03-14
-v1.0.0
+v1.0.1
 -->
