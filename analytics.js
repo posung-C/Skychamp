@@ -1,5 +1,5 @@
 (function() {
-  const analyticsUrl = 'https://www.dyeng.com.tw/analytics';
+  const analyticsUrl = 'https://www.dyeng.com.tw/analytics/collect/';
 
   const pageStartTime = Date.now();
 
