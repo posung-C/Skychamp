@@ -13,29 +13,44 @@
       align-items: center;
       min-height: 100vh;
     }
-    .pdf-container {
-      display: flex;
-      flex-direction: column;
-      width: 90vw;
-      height: 90vh;
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
+    .image-container {
+      position: relative;
+      display: inline-block;
     }
-    .pdf-container iframe {
-      flex-grow: 1;
-      width: 100%;
-      height: 100%;
-      border: none;
+    .image-container img {
+      display: block;
+      max-width: 100vw;
+      max-height: 100vh;
+      width: auto;
+      height: auto;
     }
     #linePopup {
       display: flex;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255,255,255,0.9);
+      padding: 4px 6px;
+      box-sizing: border-box;
+      font-size: 18px;
       justify-content: center;
       align-items: center;
       gap: 32px;
-      background-color: rgba(255,255,255,0.9);
-      padding: 4px 6px;
-      font-size: 18px;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    #linePopup.show {
+      opacity: 1;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
     }
     .line-button {
       padding: 4px 6px;
@@ -51,13 +66,26 @@
 </head>
 <body>
   <div class="outer-container">
-    <div class="pdf-container">
-      <iframe src="0309天晨-擬答.pdf#zoom=page-fit"></iframe>
+    <div class="image-container">
+      <img src="IMG_031601.jpg" alt="圖片">
       <div id="linePopup">
         <span>歡迎洽詢達陽英文官方Line👉</span>
         <a class="line-button" href="https://line.me/R/ti/p/@226bxata" target="_blank">加入Line</a>
       </div>
     </div>
   </div>
+  <script>
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.getElementById('linePopup').classList.add('show');
+      }, 3000);
+    });
+  </script>
 </body>
 </html>
+
+<!--
+Keystone Chiang 
+2025-03-14
+v1.0.0
+-->
