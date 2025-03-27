@@ -14,8 +14,8 @@
       min-height: 100vh;
     }
     .pdf-container {
-      position: relative;
-      display: inline-block;
+      display: flex;
+      flex-direction: column;
       width: 90vw;
       height: 90vh;
       background: white;
@@ -24,37 +24,25 @@
       overflow: hidden;
     }
     .pdf-container iframe {
+      flex-grow: 1;
       width: 100%;
       height: 100%;
       border: none;
     }
     #linePopup {
       display: flex;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(255,255,255,0.9);
-      padding: 4px 6px;
-      box-sizing: border-box;
-      font-size: 18px;
       justify-content: center;
       align-items: center;
       gap: 32px;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-    #linePopup.show {
-      opacity: 1;
+      background-color: rgba(255,255,255,0.9);
+      padding: 4px 6px;
+      font-size: 18px;
+      /* 若需要加入動畫，可啟用以下屬性 */
       animation: bounce 2s infinite;
     }
     @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
     .line-button {
       padding: 4px 6px;
@@ -66,32 +54,17 @@
       font-weight: bold;
       font-size: 18px;
     }
-    .fallback-message {
-      text-align: center;
-      font-size: 18px;
-      color: white;
-    }
   </style>
 </head>
 <body>
   <div class="outer-container">
     <div class="pdf-container">
-      <iframe src="0309天晨-擬答.pdf"></iframe>
-      <div class="fallback-message">
-        若無法顯示 PDF，請點此 <a href="0309天晨-擬答.pdf" style="color: yellow;">下載 PDF</a>。
-      </div>
+      <iframe src="document.pdf#zoom=page-fit"></iframe>
       <div id="linePopup">
         <span>歡迎洽詢達陽英文官方Line👉</span>
         <a class="line-button" href="https://line.me/R/ti/p/@226bxata" target="_blank">加入Line</a>
       </div>
     </div>
   </div>
-  <script>
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        document.getElementById('linePopup').classList.add('show');
-      }, 3000);
-    });
-  </script>
 </body>
 </html>
