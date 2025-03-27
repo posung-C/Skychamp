@@ -13,11 +13,11 @@
       align-items: center;
       min-height: 100vh;
     }
-    .image-container {
+    .pdf-container {
       position: relative;
       display: inline-block;
     }
-    .image-container img {
+    .pdf-container object {
       display: block;
       max-width: 100vw;
       max-height: 100vh;
@@ -66,8 +66,10 @@
 </head>
 <body>
   <div class="outer-container">
-    <div class="image-container">
-      <img src="IMG_031601.jpg" alt="圖片">
+    <div class="pdf-container">
+      <object data="document.pdf" type="application/pdf">
+        <p>您的瀏覽器不支援 PDF 檢視，請點此 <a href="document.pdf">下載 PDF</a>。</p>
+      </object>
       <div id="linePopup">
         <span>歡迎洽詢達陽英文官方Line👉</span>
         <a class="line-button" href="https://line.me/R/ti/p/@226bxata" target="_blank">加入Line</a>
@@ -84,8 +86,10 @@
 </body>
 </html>
 
+
 <!--
 Keystone Chiang 
-2025-03-14
-v1.0.0
+2025-03-27
+v2.0.0
+把jpg換pdf
 -->
