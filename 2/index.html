@@ -26,21 +26,22 @@
       height: auto;
     }
     #linePopup {
-      display: flex;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(255,255,255,0.9);
-      padding: 6px 8px;
-      box-sizing: border-box;
-      font-size: 18px;
-      justify-content: center;
-      align-items: center;
-      gap: 32px;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
+  display: flex;
+  position: fixed; 
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255,255,255,0.9);
+  padding: 6px 8px;
+  box-sizing: border-box;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: 9999;
+}
     #linePopup.show {
       opacity: 1;
       animation: bounce 2s infinite;
