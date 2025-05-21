@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      width: 100vw;  
+      overflow-x: hidden; 
+    }
+    .outer-container {
+      width: 100%;
+    }
+    .image-container {
+      position: relative;
+      width: 100vw;  
+      height: auto;
+    }
+    .image-container img {
+      display: block;
+      width: 100vw;  
+      height: auto;
+    }
+    #linePopup {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100vw;            
+      box-sizing: border-box;
+      background-color: rgba(255,255,255,0.9);
+      padding: 6px 8px;
+      font-size: 18px;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      opacity: 0;
+      transition: opacity 1s ease;
+      z-index: 9999;
+    }
+    #linePopup.show {
+      opacity: 1;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    .line-button {
+      flex: 1;                  
+      text-align: center;     
+      padding: 12px 0;        
+      border: 1px solid #00c300;
+      border-radius: 0;        
+      text-decoration: none;
+      background-color: #00c300;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 18px;
+      width: 100%;          
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div class="outer-container">
+    <div class="image-container">
+      <img src="114升高一.jpg" alt="圖片">
+      <div id="linePopup">
+        <span>歡迎洽詢達陽英文官方Line👉</span>
+        <a class="line-button" href="https://line.me/R/ti/p/@226bxata" target="_blank">加入Line</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.getElementById('linePopup').classList.add('show');
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
