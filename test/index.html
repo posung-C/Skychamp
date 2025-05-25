@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>PDF 預覽頁面</title>
+  <style>/
+    .cta-popup {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #fff;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    }
+    .cta-popup.active {
+      display: block;
+    }
+    .btn-line {
+      display: inline-block;
+      background-color: #00c300;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <iframe src="file.pdf" style="width:100vw; height:100vh; border:none;"></iframe>
+
+  <div id="ctaPopup" class="cta-popup">
+    <p>歡迎洽詢達陽英文官方Line👉</p>
+    <a href="https://line.me/R/ti/p/@226bxata" class="btn-line" target="_blank">加入LINE</a>
+  </div>
+
+  <script>
+    setTimeout(function(){
+      document.getElementById('ctaPopup').classList.add('active');
+    }, 3000);
+  </script>
+
+</body>
+</html>
