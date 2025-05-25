@@ -1,91 +1,34 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       width: 100%;
-      overflow: hidden;
       background-color: black;
+      overflow: hidden;
     }
-
     .pdf-container {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-    }
-
-    .pdf-container iframe {
-      width: 100vw;
-      height: 100vh;
-      border: none;
-    }
-
-    #linePopup {
-      display: flex;
-      position: fixed;
-      bottom: 0;
+      position: absolute;
+      top: 0;
       left: 0;
       width: 100vw;
-      box-sizing: border-box;
-      background-color: rgba(255, 255, 255, 0.95);
-      padding: 8px 16px;
-      font-size: 18px;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      opacity: 0;
-      transition: opacity 1s ease;
-      z-index: 9999;
+      height: 100vh;
     }
-
-    #linePopup.show {
-      opacity: 1;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    .line-button {
-      padding: 8px 16px;
-      border: 1px solid #00c300;
-      border-radius: 8px;
-      background-color: #00c300;
-      color: #fff;
-      font-weight: bold;
-      font-size: 18px;
-      text-decoration: none;
-      white-space: nowrap;
+    .pdf-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
 <body>
   <div class="pdf-container">
     <iframe src="111-2細菌.pdf"></iframe>
-
-    <div id="linePopup">
-      <span>歡迎洽詢達陽英文官方Line👉</span>
-      <a class="line-button" href="https://line.me/R/ti/p/@226bxata" target="_blank">加入Line</a>
-    </div>
   </div>
-
-  <script>
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        document.getElementById('linePopup').classList.add('show');
-      }, 3000);
-    });
-  </script>
 </body>
 </html>
