@@ -1,46 +1,91 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
-  <title>PDF 預覽頁面</title>
-  <style>/
-    .cta-popup {
-      display: none;
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background-color: black;
+    }
+
+    .pdf-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .pdf-container iframe {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+    }
+
+    #linePopup {
+      display: flex;
       position: fixed;
       bottom: 0;
-      width: 100%;
-      background-color: #fff;
-      text-align: center;
-      padding: 20px;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+      left: 0;
+      width: 100vw;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 8px 16px;
+      font-size: 18px;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      opacity: 0;
+      transition: opacity 1s ease;
+      z-index: 9999;
     }
-    .cta-popup.active {
-      display: block;
+
+    #linePopup.show {
+      opacity: 1;
+      animation: bounce 2s infinite;
     }
-    .btn-line {
-      display: inline-block;
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .line-button {
+      padding: 8px 16px;
+      border: 1px solid #00c300;
+      border-radius: 8px;
       background-color: #00c300;
       color: #fff;
-      padding: 10px 20px;
+      font-weight: bold;
+      font-size: 18px;
       text-decoration: none;
-      border-radius: 5px;
+      white-space: nowrap;
     }
   </style>
 </head>
 <body>
+  <div class="pdf-container">
+    <iframe src="111-2細菌.pdf"></iframe>
 
-  <iframe src="111-2細菌.pdf" style="width:100vw; height:100vh; border:none;"></iframe>
-
-  <div id="ctaPopup" class="cta-popup">
-    <p>歡迎洽詢達陽英文官方Line👉</p>
-    <a href="https://line.me/R/ti/p/@226bxata" class="btn-line" target="_blank">加入LINE</a>
+    <div id="linePopup">
+      <span>歡迎洽詢達陽英文官方Line👉</span>
+      <a class="line-button" href="https://line.me/R/ti/p/@226bxata" target="_blank">加入Line</a>
+    </div>
   </div>
 
   <script>
-    setTimeout(function(){
-      document.getElementById('ctaPopup').classList.add('active');
-    }, 3000);
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        document.getElementById('linePopup').classList.add('show');
+      }, 3000);
+    });
   </script>
-
 </body>
 </html>
