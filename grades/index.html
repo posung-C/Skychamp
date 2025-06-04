@@ -1,103 +1,152 @@
+{# templates/index.html #}
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>學生成績查詢首頁</title>
+  <meta charset="UTF-8">
+  <title>學生成績總覽</title>
+  <!-- 載入前端打包 ZIP 與觸發下載所需的 JSZip、FileSaver.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    h1 { font-size: 24px; }
-    ul { font-size: 16px; }
-    li { margin: 5px 0; }
-    a { text-decoration: none; color: #0066cc; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 600px;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    #downloadAllBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 4px;
+    }
+    #downloadAllBtn:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+    .link-cell a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    .link-cell a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <h1>請點擊下列學號，查看該生成績報表</h1>
-  <ul>
-  
-    <li><a href="students/69102.html">69102</a></li>
-  
-    <li><a href="students/74821.html">74821</a></li>
-  
-    <li><a href="students/91013.html">91013</a></li>
-  
-    <li><a href="students/92555.html">92555</a></li>
-  
-    <li><a href="students/93402.html">93402</a></li>
-  
-    <li><a href="students/101092.html">101092</a></li>
-  
-    <li><a href="students/101306.html">101306</a></li>
-  
-    <li><a href="students/101469.html">101469</a></li>
-  
-    <li><a href="students/101823.html">101823</a></li>
-  
-    <li><a href="students/101846.html">101846</a></li>
-  
-    <li><a href="students/101858.html">101858</a></li>
-  
-    <li><a href="students/101991.html">101991</a></li>
-  
-    <li><a href="students/101993.html">101993</a></li>
-  
-    <li><a href="students/101996.html">101996</a></li>
-  
-    <li><a href="students/101997.html">101997</a></li>
-  
-    <li><a href="students/102017.html">102017</a></li>
-  
-    <li><a href="students/102041.html">102041</a></li>
-  
-    <li><a href="students/102553.html">102553</a></li>
-  
-    <li><a href="students/102559.html">102559</a></li>
-  
-    <li><a href="students/102565.html">102565</a></li>
-  
-    <li><a href="students/102588.html">102588</a></li>
-  
-    <li><a href="students/102592.html">102592</a></li>
-  
-    <li><a href="students/103100.html">103100</a></li>
-  
-    <li><a href="students/103485.html">103485</a></li>
-  
-    <li><a href="students/103492.html">103492</a></li>
-  
-    <li><a href="students/103494.html">103494</a></li>
-  
-    <li><a href="students/103505.html">103505</a></li>
-  
-    <li><a href="students/103512.html">103512</a></li>
-  
-    <li><a href="students/103539.html">103539</a></li>
-  
-    <li><a href="students/103588.html">103588</a></li>
-  
-    <li><a href="students/103590.html">103590</a></li>
-  
-    <li><a href="students/104273.html">104273</a></li>
-  
-    <li><a href="students/104428.html">104428</a></li>
-  
-    <li><a href="students/105043.html">105043</a></li>
-  
-    <li><a href="students/105045.html">105045</a></li>
-  
-    <li><a href="students/106052.html">106052</a></li>
-  
-    <li><a href="students/106055.html">106055</a></li>
-  
-    <li><a href="students/106060.html">106060</a></li>
-  
-    <li><a href="students/109008.html">109008</a></li>
-  
-    <li><a href="students/109053.html">109053</a></li>
-  
-    <li><a href="students/109060.html">109060</a></li>
-  
-  </ul>
-  <p>※ 若要直接下載 PDF，請前往 <code>students/學號.pdf</code>。</p>
+  <h1>學生成績總覽</h1>
+
+  {# 一鍵下載所有 PDF 的按鈕 #}
+  <button id="downloadAllBtn">一鍵下載所有 PDF</button>
+
+  {# 顯示學生學號與姓名，以及單獨下載該生 PDF 的連結 #}
+  <table>
+    <thead>
+      <tr>
+        <th>學號</th>
+        <th>姓名</th>
+        <th>下載 PDF</th>
+      </tr>
+    </thead>
+    <tbody>
+      {# 假設 generate_reports.py 傳入的 student_list 是如下形式：
+         student_list = [
+           {'id': '108001', 'name': '張小明'},
+           {'id': '108002', 'name': '陳美麗'},
+           ...
+         ]
+      #}
+      {% for student in student_list %}
+      <tr>
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td class="link-cell">
+          <a href="students/{{ student.id }}.pdf" target="_blank">下載</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <script>
+    // --------------------------------------------------------------------
+    // 前瞻性思考：若將來學生人數、檔案量持續增長，打包 ZIP 可避免一次性多個瀏覽器彈跳視窗問題，
+    // 同時也能確保檔案命名一致、下載體驗更流暢。若未來有後端需求，也可改為伺服器端打包 ZIP。
+    // --------------------------------------------------------------------
+
+    // 1. 將 Jinja2 模板中的 student_list 轉成前端的陣列 (只需學號即可，因為下載時只用到學號)
+    const students = [
+      {% for student in student_list %}
+        { id: '{{ student.id }}' }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ];
+
+    // 2. 一鍵下載按鈕的邏輯：依序抓取每個 PDF，打包到 ZIP，再一次性下載
+    const downloadBtn = document.getElementById("downloadAllBtn");
+    downloadBtn.addEventListener("click", async () => {
+      downloadBtn.disabled = true;
+      downloadBtn.textContent = "下載中……請稍候";
+
+      const zip = new JSZip();
+      const basePath = "students/";  // PDF 檔案相對於 index.html 的路徑
+
+      // 並行抓取所有學生 PDF
+      const fetchPromises = students.map(stu => {
+        const pdfURL = `${basePath}${stu.id}.pdf`;
+        return fetch(pdfURL)
+          .then(response => {
+            if (!response.ok) {
+              console.warn(`${stu.id}.pdf 下載失敗，狀態碼：${response.status}`);
+              return null;
+            }
+            return response.blob().then(blob => ({ id: stu.id, blob }));
+          })
+          .catch(err => {
+            console.error(`${stu.id}.pdf 下載錯誤：`, err);
+            return null;
+          });
+      });
+
+      const results = await Promise.all(fetchPromises);
+
+      // 把成功拿到的 blob 加進 ZIP，檔名格式為「學號.pdf」
+      results.forEach(item => {
+        if (item && item.blob) {
+          zip.file(`${item.id}.pdf`, item.blob);
+        }
+      });
+
+      // 產生 ZIP 並觸發下載
+      try {
+        const zipBlob = await zip.generateAsync({ type: "blob" });
+        saveAs(zipBlob, "所有學生報告.zip");
+      } catch (err) {
+        console.error("ZIP 生成失敗：", err);
+        alert("產生 ZIP 檔時發生錯誤，請稍後再試。");
+      }
+
+      // 恢復按鈕狀態
+      downloadBtn.disabled = false;
+      downloadBtn.textContent = "一鍵下載所有 PDF";
+    });
+  </script>
 </body>
 </html>
