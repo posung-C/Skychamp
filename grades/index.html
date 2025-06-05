@@ -1,152 +1,268 @@
-{# templates/index.html #}
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>學生成績總覽</title>
-  <!-- 載入前端打包 ZIP 與觸發下載所需的 JSZip、FileSaver.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <meta charset="utf-8">
+  <title>學生成績查詢首頁</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    h1 {
-      margin-bottom: 10px;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      max-width: 600px;
-    }
-    th, td {
-      border: 1px solid #999;
-      padding: 8px 12px;
-      text-align: left;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-    #downloadAllBtn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 14px;
-      cursor: pointer;
-      border: none;
-      background-color: #4CAF50;
-      color: white;
-      border-radius: 4px;
-    }
-    #downloadAllBtn:disabled {
-      background-color: #aaa;
-      cursor: not-allowed;
-    }
-    .link-cell a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-    .link-cell a:hover {
-      text-decoration: underline;
-    }
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { font-size: 24px; }
+    ul { font-size: 16px; list-style: none; padding: 0; }
+    li { margin: 5px 0; }
+    a { text-decoration: none; color: #0066cc; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <h1>學生成績總覽</h1>
-
-  {# 一鍵下載所有 PDF 的按鈕 #}
-  <button id="downloadAllBtn">一鍵下載所有 PDF</button>
-
-  {# 顯示學生學號與姓名，以及單獨下載該生 PDF 的連結 #}
-  <table>
-    <thead>
-      <tr>
-        <th>學號</th>
-        <th>姓名</th>
-        <th>下載 PDF</th>
-      </tr>
-    </thead>
-    <tbody>
-      {# 假設 generate_reports.py 傳入的 student_list 是如下形式：
-         student_list = [
-           {'id': '108001', 'name': '張小明'},
-           {'id': '108002', 'name': '陳美麗'},
-           ...
-         ]
-      #}
-      {% for student in student_list %}
-      <tr>
-        <td>{{ student.id }}</td>
-        <td>{{ student.name }}</td>
-        <td class="link-cell">
-          <a href="students/{{ student.id }}.pdf" target="_blank">下載</a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-
-  <script>
-    // --------------------------------------------------------------------
-    // 前瞻性思考：若將來學生人數、檔案量持續增長，打包 ZIP 可避免一次性多個瀏覽器彈跳視窗問題，
-    // 同時也能確保檔案命名一致、下載體驗更流暢。若未來有後端需求，也可改為伺服器端打包 ZIP。
-    // --------------------------------------------------------------------
-
-    // 1. 將 Jinja2 模板中的 student_list 轉成前端的陣列 (只需學號即可，因為下載時只用到學號)
-    const students = [
-      {% for student in student_list %}
-        { id: '{{ student.id }}' }{% if not loop.last %},{% endif %}
-      {% endfor %}
-    ];
-
-    // 2. 一鍵下載按鈕的邏輯：依序抓取每個 PDF，打包到 ZIP，再一次性下載
-    const downloadBtn = document.getElementById("downloadAllBtn");
-    downloadBtn.addEventListener("click", async () => {
-      downloadBtn.disabled = true;
-      downloadBtn.textContent = "下載中……請稍候";
-
-      const zip = new JSZip();
-      const basePath = "students/";  // PDF 檔案相對於 index.html 的路徑
-
-      // 並行抓取所有學生 PDF
-      const fetchPromises = students.map(stu => {
-        const pdfURL = `${basePath}${stu.id}.pdf`;
-        return fetch(pdfURL)
-          .then(response => {
-            if (!response.ok) {
-              console.warn(`${stu.id}.pdf 下載失敗，狀態碼：${response.status}`);
-              return null;
-            }
-            return response.blob().then(blob => ({ id: stu.id, blob }));
-          })
-          .catch(err => {
-            console.error(`${stu.id}.pdf 下載錯誤：`, err);
-            return null;
-          });
-      });
-
-      const results = await Promise.all(fetchPromises);
-
-      // 把成功拿到的 blob 加進 ZIP，檔名格式為「學號.pdf」
-      results.forEach(item => {
-        if (item && item.blob) {
-          zip.file(`${item.id}.pdf`, item.blob);
-        }
-      });
-
-      // 產生 ZIP 並觸發下載
-      try {
-        const zipBlob = await zip.generateAsync({ type: "blob" });
-        saveAs(zipBlob, "所有學生報告.zip");
-      } catch (err) {
-        console.error("ZIP 生成失敗：", err);
-        alert("產生 ZIP 檔時發生錯誤，請稍後再試。");
-      }
-
-      // 恢復按鈕狀態
-      downloadBtn.disabled = false;
-      downloadBtn.textContent = "一鍵下載所有 PDF";
-    });
-  </script>
+  <h1>請點擊以下學號，查看該生成績報表</h1>
+  <ul>
+    
+      <li>
+        <a href="students/69102.html" target="_blank">
+          69102 蔡佳恩
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/74821.html" target="_blank">
+          74821 施伯昌
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/91013.html" target="_blank">
+          91013 王宇玄
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/92555.html" target="_blank">
+          92555 張名昀
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/93402.html" target="_blank">
+          93402 劉丞皓
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/101092.html" target="_blank">
+          101092 邱羽暄
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/101306.html" target="_blank">
+          101306 薛仕廷
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/101469.html" target="_blank">
+          101469 洪偉恩
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/101823.html" target="_blank">
+          101823 張佑安
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/101846.html" target="_blank">
+          101846 李安閏
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/101858.html" target="_blank">
+          101858 陳柏鈞
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/101991.html" target="_blank">
+          101991 顏佑安
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/101993.html" target="_blank">
+          101993 洪梓閎
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/101996.html" target="_blank">
+          101996 陳裕心
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/101997.html" target="_blank">
+          101997 江銘祥
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/102017.html" target="_blank">
+          102017 黃安晴
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/102041.html" target="_blank">
+          102041 王翊亭
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/102553.html" target="_blank">
+          102553 塗子瑩
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/102559.html" target="_blank">
+          102559 雲巧昕
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/102565.html" target="_blank">
+          102565 陳宥妤
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/102588.html" target="_blank">
+          102588 劉家俞
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/102592.html" target="_blank">
+          102592 江函恩
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/103100.html" target="_blank">
+          103100 李泓誼
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/103485.html" target="_blank">
+          103485 劉瑜忻
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/103492.html" target="_blank">
+          103492 邵庭宇
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/103494.html" target="_blank">
+          103494 黃皓嶸
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/103505.html" target="_blank">
+          103505 余芷嫺
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/103512.html" target="_blank">
+          103512 何安妤
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/103539.html" target="_blank">
+          103539 李穎柔
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/103588.html" target="_blank">
+          103588 黃佳琪
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/103590.html" target="_blank">
+          103590 趙沛淩
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/104273.html" target="_blank">
+          104273 林昱宏
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/104428.html" target="_blank">
+          104428 莊穎承
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/105043.html" target="_blank">
+          105043 范奕飛
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/105045.html" target="_blank">
+          105045 戴君陶
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/106052.html" target="_blank">
+          106052 王詩筑
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/106055.html" target="_blank">
+          106055 何孟羲
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/106060.html" target="_blank">
+          106060 王懷賢
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/109008.html" target="_blank">
+          109008 陳彩苹
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/109053.html" target="_blank">
+          109053 陳亞昀
+        </a>
+      </li>
+    
+      <li>
+        <a href="students/109060.html" target="_blank">
+          109060 周依靜
+        </a>
+      </li>
+    
+  </ul>
+  <p>※ 若要下載 PDF，請至 <code>students/學號.pdf</code>。</p>
 </body>
 </html>
