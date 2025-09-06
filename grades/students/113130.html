@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>學生成績報表 - 凌千瀚 (113130)</title>
+  <style>
+    body { font-family: "Noto Serif CJK TC", "Times New Roman", serif; margin: 16px; color: #222 }
+    header { border-bottom: 1px solid #ddd; padding-bottom: 8px; margin-bottom: 12px }
+    h1 { font-size: 22px; margin: 0 }
+    .meta { color: #555; margin-top: 4px }
+    .section { margin: 12px 0 }
+    .charts { display: flex; gap: 12px; flex-wrap: wrap }
+    .chart { box-sizing: border-box }
+    .chart.full { width: 100%; padding: 0 12px }
+    .chart.half { width: 48%; }
+    .chart.full img { width: 100%; display:block; margin: 0 }
+    img { max-width: 100%; height: auto; display: block }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px }
+    th, td { border: 1px solid #e6e6e6; padding: 6px 8px; text-align: center; vertical-align: middle; }
+    th { background: #f6f6f6; white-space: nowrap; }
+    td { white-space: normal; }
+    .small { font-size: 13px; color: #666 }
+    .badge { display:inline-block; padding: 4px 8px; border-radius: 6px; background:#f0f0f0; margin-right:6px }
+    .warning { color: #b33 }
+    hr { border: none; border-top: 1px solid #ccc; margin: 20px 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>凌千瀚（學號：113130，衛道）</h1>
+    <div class="meta small">平均分：68.1　標準差：21.3　排名：18　百分等級：45.2</div>
+  </header>
+
+  <div class="section charts">
+    
+      
+      <div class="chart full">
+        <img src="113130_scores.png" alt="">
+      </div>
+      
+    
+      
+      <div class="chart half">
+        <img src="113130_regression.png" alt="chart">
+      </div>
+      
+    
+  </div>
+
+  <hr/>
+
+  <div class="section">
+    <h3>BCS score</h3>
+    
+      
+        <p>BCS：<strong>86.6</strong>（排名：22；t 總分：199.93)</p>
+      
+    
+  </div>
+
+  <hr/>
+
+  <div class="section">
+    <h3>本週表現（最新一週：低於班級平均 1 SD）</h3>
+    
+      <p>本週表現尚可</p>
+    
+  </div>
+
+  <hr/>
+
+  <div class="section">
+    <h3>需要注意（最近三次該科平均 z ≤ -1）</h3>
+    
+      <table>
+        <thead>
+          <tr><th>科目</th><th>最近次數</th><th>平均 z</th><th>說明</th></tr>
+        </thead>
+        <tbody>
+        
+          <tr>
+            <td>英</td>
+            <td>2</td>
+            <td class="warning">-1.11</td>
+            <td class="small">平均 z = -1.11</td>
+          </tr>
+        
+        </tbody>
+      </table>
+    
+  </div>
+
+</body>
+</html>
