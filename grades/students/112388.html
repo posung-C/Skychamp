@@ -10,6 +10,7 @@
     h1 { font-size: 22px; margin: 0 }
     .meta { color: #555; margin-top: 4px }
     .section { margin: 12px 0 }
+    hr { border: none; border-top: 1px solid #aaa; margin: 20px 0 }
     .charts { display: flex; gap: 12px; flex-wrap: wrap }
     .chart { box-sizing: border-box }
     .chart.full { width: 100%; padding: 0 12px }
@@ -23,7 +24,8 @@
     .small { font-size: 13px; color: #666 }
     .badge { display:inline-block; padding: 4px 8px; border-radius: 6px; background:#f0f0f0; margin-right:6px }
     .warning { color: #b33 }
-    hr { border: none; border-top: 1px solid #ccc; margin: 20px 0; }
+    .download-btn { display:inline-block; padding: 10px 16px; margin-top: 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:6px; font-weight:bold; }
+    .download-btn:hover { background:#0056b3; }
   </style>
 </head>
 <body>
@@ -48,33 +50,37 @@
     
   </div>
 
-  <hr/>
+  <hr>
 
   <div class="section">
     <h3>BCS score</h3>
     
       
-        <p>BCS：<strong>87.8</strong>（排名：21；t 總分：202.6)</p>
+        <p>BCS score：<strong>87.8</strong>（排名：21；t 總分：202.6)</p>
       
     
   </div>
 
-  <hr/>
+  <hr>
 
   <div class="section">
-    <h3>本週表現（最新一週：低於班級平均 1 SD）</h3>
+    <h3>本週表現（低於班級平均 1 SD）</h3>
     
       <p>本週表現尚可</p>
     
   </div>
 
-  <hr/>
+  <hr>
 
   <div class="section">
     <h3>需要注意（最近三次該科平均 z ≤ -1）</h3>
     
       <p>無（最近三次該科平均表現未達注意門檻）</p>
     
+  </div>
+
+  <div class="section" style="text-align:center">
+    <a href="112388.pdf" class="download-btn" download>📥 下載 PDF</a>
   </div>
 
 </body>
