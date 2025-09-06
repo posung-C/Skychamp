@@ -26,6 +26,22 @@
     .warning { color: #b33 }
     .download-btn { display:inline-block; padding: 10px 16px; margin-top: 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:6px; font-weight:bold; }
     .download-btn:hover { background:#0056b3; }
+
+    /* 新增：純文字藍字底線的下載連結樣式 */
+    .download-link {
+      display: inline;           /* 純文字呈現 */
+      padding: 0;                /* 移除按鈕內距 */
+      margin-top: 20px;
+      background: none;          /* 無背景 */
+      color: #007bff;            /* 藍色文字 */
+      text-decoration: underline;/* 底線 */
+      border-radius: 0;
+      font-weight: normal;       /* 如果要可改成 bold */
+    }
+    .download-link:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -80,7 +96,7 @@
   </div>
 
   <div class="section" style="text-align:center">
-    <a href="116265.pdf" class="download-btn" download>📥 下載 PDF</a>
+    <a href="116265.pdf" class="download-link" download>📥 下載 PDF</a>
   </div>
 
 </body>
