@@ -1,238 +1,322 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
-  <title>學生成績查詢首頁</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>成績查詢 - 學生清單</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    h1 { font-size: 24px; }
-    ul { font-size: 16px; list-style: none; padding: 0; }
-    li { margin: 5px 0; }
-    a { text-decoration: none; color: #0066cc; }
-    a:hover { text-decoration: underline; }
+    body{font-family: -apple-system, "Noto Sans TC", Arial; padding:20px; background:#f6f8fb}
+    .box{max-width:900px;margin:0 auto;background:#fff;padding:16px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid #eee;text-align:left}
+    a.btn{display:inline-block;padding:6px 10px;border-radius:6px;text-decoration:none;border:1px solid #888;font-size:14px}
+    a.view{border-color:#2b7cff;color:#2b7cff}
+    a.pdf{border-color:#3aa76d;color:#3aa76d;margin-left:8px}
+    .empty{color:#666;padding:12px}
   </style>
 </head>
 <body>
-  <h1>請點擊以下學號，查看該生成績報表</h1>
-  <ul>
+  <div class="box">
+    <h2>請點擊以下學號，查看該生成績報表</h2>
+
     
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
+    <table>
+      <thead>
+        <tr><th>學號</th><th>操作</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><a href="./students/91964.html" class="id-link" target="_blank" rel="noopener">91964</a></td>
+          <td>
+            <a class="btn view" href="./students/91964.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/91964.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/101998.html" class="id-link" target="_blank" rel="noopener">101998</a></td>
+          <td>
+            <a class="btn view" href="./students/101998.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/101998.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/102399.html" class="id-link" target="_blank" rel="noopener">102399</a></td>
+          <td>
+            <a class="btn view" href="./students/102399.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/102399.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/103032.html" class="id-link" target="_blank" rel="noopener">103032</a></td>
+          <td>
+            <a class="btn view" href="./students/103032.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/103032.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/103599.html" class="id-link" target="_blank" rel="noopener">103599</a></td>
+          <td>
+            <a class="btn view" href="./students/103599.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/103599.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/103601.html" class="id-link" target="_blank" rel="noopener">103601</a></td>
+          <td>
+            <a class="btn view" href="./students/103601.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/103601.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/106110.html" class="id-link" target="_blank" rel="noopener">106110</a></td>
+          <td>
+            <a class="btn view" href="./students/106110.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/106110.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/109020.html" class="id-link" target="_blank" rel="noopener">109020</a></td>
+          <td>
+            <a class="btn view" href="./students/109020.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/109020.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/111433.html" class="id-link" target="_blank" rel="noopener">111433</a></td>
+          <td>
+            <a class="btn view" href="./students/111433.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/111433.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/111437.html" class="id-link" target="_blank" rel="noopener">111437</a></td>
+          <td>
+            <a class="btn view" href="./students/111437.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/111437.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/111467.html" class="id-link" target="_blank" rel="noopener">111467</a></td>
+          <td>
+            <a class="btn view" href="./students/111467.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/111467.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/111570.html" class="id-link" target="_blank" rel="noopener">111570</a></td>
+          <td>
+            <a class="btn view" href="./students/111570.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/111570.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/111572.html" class="id-link" target="_blank" rel="noopener">111572</a></td>
+          <td>
+            <a class="btn view" href="./students/111572.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/111572.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/111574.html" class="id-link" target="_blank" rel="noopener">111574</a></td>
+          <td>
+            <a class="btn view" href="./students/111574.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/111574.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/111576.html" class="id-link" target="_blank" rel="noopener">111576</a></td>
+          <td>
+            <a class="btn view" href="./students/111576.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/111576.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/111578.html" class="id-link" target="_blank" rel="noopener">111578</a></td>
+          <td>
+            <a class="btn view" href="./students/111578.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/111578.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/112104.html" class="id-link" target="_blank" rel="noopener">112104</a></td>
+          <td>
+            <a class="btn view" href="./students/112104.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/112104.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/112234.html" class="id-link" target="_blank" rel="noopener">112234</a></td>
+          <td>
+            <a class="btn view" href="./students/112234.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/112234.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/112388.html" class="id-link" target="_blank" rel="noopener">112388</a></td>
+          <td>
+            <a class="btn view" href="./students/112388.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/112388.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/112509.html" class="id-link" target="_blank" rel="noopener">112509</a></td>
+          <td>
+            <a class="btn view" href="./students/112509.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/112509.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/112511.html" class="id-link" target="_blank" rel="noopener">112511</a></td>
+          <td>
+            <a class="btn view" href="./students/112511.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/112511.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/112513.html" class="id-link" target="_blank" rel="noopener">112513</a></td>
+          <td>
+            <a class="btn view" href="./students/112513.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/112513.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/112515.html" class="id-link" target="_blank" rel="noopener">112515</a></td>
+          <td>
+            <a class="btn view" href="./students/112515.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/112515.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/113130.html" class="id-link" target="_blank" rel="noopener">113130</a></td>
+          <td>
+            <a class="btn view" href="./students/113130.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/113130.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/113408.html" class="id-link" target="_blank" rel="noopener">113408</a></td>
+          <td>
+            <a class="btn view" href="./students/113408.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/113408.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/113439.html" class="id-link" target="_blank" rel="noopener">113439</a></td>
+          <td>
+            <a class="btn view" href="./students/113439.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/113439.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/113441.html" class="id-link" target="_blank" rel="noopener">113441</a></td>
+          <td>
+            <a class="btn view" href="./students/113441.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/113441.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/114058.html" class="id-link" target="_blank" rel="noopener">114058</a></td>
+          <td>
+            <a class="btn view" href="./students/114058.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/114058.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/114230.html" class="id-link" target="_blank" rel="noopener">114230</a></td>
+          <td>
+            <a class="btn view" href="./students/114230.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/114230.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/115047.html" class="id-link" target="_blank" rel="noopener">115047</a></td>
+          <td>
+            <a class="btn view" href="./students/115047.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/115047.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/115173.html" class="id-link" target="_blank" rel="noopener">115173</a></td>
+          <td>
+            <a class="btn view" href="./students/115173.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/115173.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/116265.html" class="id-link" target="_blank" rel="noopener">116265</a></td>
+          <td>
+            <a class="btn view" href="./students/116265.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/116265.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/116341.html" class="id-link" target="_blank" rel="noopener">116341</a></td>
+          <td>
+            <a class="btn view" href="./students/116341.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/116341.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/116354.html" class="id-link" target="_blank" rel="noopener">116354</a></td>
+          <td>
+            <a class="btn view" href="./students/116354.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/116354.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/116508.html" class="id-link" target="_blank" rel="noopener">116508</a></td>
+          <td>
+            <a class="btn view" href="./students/116508.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/116508.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><a href="./students/117701.html" class="id-link" target="_blank" rel="noopener">117701</a></td>
+          <td>
+            <a class="btn view" href="./students/117701.html" target="_blank" rel="noopener">查看報表</a>
+            <a class="btn pdf" href="./students/117701.pdf" target="_blank" rel="noopener" download>下載 PDF</a>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
     
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-      <li>
-        <a href="students/.html" target="_blank">
-           
-        </a>
-      </li>
-    
-  </ul>
-  <p>※ 若要下載 PDF，請至 <code>students/學號.pdf</code>。</p>
+  </div>
 </body>
 </html>
