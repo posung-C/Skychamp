@@ -1,104 +1,76 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>學生成績報表 - 李昊庭 (111437)</title>
+  <meta charset="utf-8">
+  <title>李昊庭（111437）成績報告</title>
   <style>
-    body { font-family: "Noto Serif CJK TC", "Times New Roman", serif; margin: 16px; color: #222 }
-    header { border-bottom: 1px solid #ddd; padding-bottom: 8px; margin-bottom: 12px }
-    h1 { font-size: 22px; margin: 0 }
-    .meta { color: #555; margin-top: 4px }
-    .section { margin: 12px 0 }
-    hr { border: none; border-top: 1px solid #aaa; margin: 20px 0 }
-    .charts { display: flex; gap: 12px; flex-wrap: wrap }
-    .chart { box-sizing: border-box }
-    .chart.full { width: 100%; padding: 0 12px }
-    .chart.half { width: 48%; }
-    .chart.full img { width: 100%; display:block; margin: 0 }
-    img { max-width: 100%; height: auto; display: block }
-    table { width: 100%; border-collapse: collapse; margin-top: 8px }
-    th, td { border: 1px solid #e6e6e6; padding: 6px 8px; text-align: center; vertical-align: middle; }
-    th { background: #f6f6f6; white-space: nowrap; }
-    td { white-space: normal; }
-    .small { font-size: 13px; color: #666 }
-    .badge { display:inline-block; padding: 4px 8px; border-radius: 6px; background:#f0f0f0; margin-right:6px }
-    .warning { color: #b33 }
-    .download-btn { display:inline-block; padding: 10px 16px; margin-top: 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:6px; font-weight:bold; }
-    .download-btn:hover { background:#0056b3; }
-
-    /* 新增：純文字藍字底線的下載連結樣式（靠左） */
-    .download-link {
-      display: inline-block;     /* 保持為純文字外觀但可控制 margin */
-      padding: 0;                /* 移除按鈕內距 */
-      margin-top: 20px;
-      background: none;          /* 無背景 */
-      color: #007bff;            /* 藍色文字 */
-      text-decoration: underline;/* 底線 */
-      border-radius: 0;
-      font-weight: normal;
+    /* 只保留 PDF 端用的 NotoSerifCJKtc 字型 */
+    body {
+      font-family: 'NotoSerifCJKtc', serif;
+      margin: 20px;
+      max-width: 800px;
     }
-    .download-link:hover {
-      color: #0056b3;
-      text-decoration: underline;
+
+    /* 表格基本樣式 */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 20px;
+      margin-top: 30px;
+    }
+
+    .chart {
+      margin: 20px 0;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>李昊庭（學號：111437，一中）</h1>
-    <div class="meta small">平均分：79.9　標準差：11.5　排名：—　百分等級：—</div>
-  </header>
+  <h1>李昊庭（學號：111437，一中）</h1>
 
-  <div class="section charts">
-    
-      
-      <div class="chart full">
-        <img src="111437_scores.png" alt="">
-      </div>
-      
-    
-      
-      <div class="chart half">
-        <img src="111437_regression.png" alt="chart">
-      </div>
-      
-    
-  </div>
+  <h2>成績走勢圖</h2>
+  
+    <div class="chart">
+      <img src="111437_scores.png" alt="成績走勢圖">
+    </div>
+  
+    <div class="chart">
+      <img src="111437_regression.png" alt="成績走勢圖">
+    </div>
+  
 
-  <hr>
+  <h2>與班級相比，顯著較差的考試</h2>
+  
+    <p>無顯著較差的考試</p>
+  
 
-  <div class="section">
-    <h3>BCS score</h3>
-    
-      
-        <p>BCS score：<strong>127.3</strong>（排名：1；t 總分：179.24)</p>
-      
-    
-  </div>
+  <h2>需要注意的考試</h2>
+  
+    <p>無需要注意的考試</p>
+  
 
-  <hr>
-
-  <div class="section">
-    <h3>本週表現（低於班級平均 1 SD）</h3>
-    
-      <p>本週表現尚可</p>
-    
-  </div>
-
-  <hr>
-
-  <div class="section">
-    <h3>需要注意（最近三次該科平均 z ≤ -1）</h3>
-    
-      <p>無（最近三次該科平均表現未達注意門檻）</p>
-    
-  </div>
-
-  <!-- 改為靠左對齊 -->
-  <div class="section" style="text-align:left">
-    <a href="111437.pdf" class="download-link" download>下載 PDF</a>
-  </div>
-
+  <p><a href="111437.pdf" download>下載完整 PDF</a></p>
 </body>
 </html>
