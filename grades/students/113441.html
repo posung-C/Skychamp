@@ -4,51 +4,58 @@
   <meta charset="utf-8">
   <title>雲筱甯（113441）成績報告</title>
   <style>
-    /* 只保留 PDF 端用的 NotoSerifCJKtc 字型 */
+    /* 設定字型，確保 PDF 輸出中文正常 */
     body {
       font-family: 'NotoSerifCJKtc', serif;
       margin: 20px;
       max-width: 800px;
     }
 
-    /* 表格基本樣式 */
+    /* 表格樣式 */
     table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 20px;
+      font-size: 14px;
     }
     th, td {
       border: 1px solid #ddd;
       padding: 8px;
-      text-align: left;
+      text-align: center;
     }
     th {
       background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    /* 靠左對齊科目名稱 */
+    td:first-child, th:first-child {
+      text-align: left;
     }
 
-    h1 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-    h2 {
-      font-size: 20px;
-      margin-top: 30px;
+    h1 { font-size: 24px; margin-bottom: 10px; }
+    h2 { 
+      font-size: 18px; 
+      margin-top: 30px; 
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
     }
 
     .chart {
       margin: 20px 0;
+      text-align: center;
     }
-
     img {
       max-width: 100%;
       height: auto;
-      display: block;
-      margin: 0 auto;
     }
+
+    /* 警示文字顏色 */
+    .alert { color: #d9534f; font-weight: bold; }
+    .info { color: #666; font-size: 0.9em; }
   </style>
 </head>
 <body>
-  <h1>雲筱甯（學號：113441，衛道）</h1>
+  <h1>雲筱甯 <span style="font-size:0.6em; color:#555;">(學號：113441 | 衛道)</span></h1>
 
   <h2>成績走勢圖</h2>
   
@@ -61,16 +68,18 @@
     </div>
   
 
-  <h2>與班級相比，顯著較差的考試</h2>
+  <h2>與班級相比，顯著較差的考試 (最新一週)</h2>
   
-    <p>無顯著較差的考試</p>
-  
-
-  <h2>需要注意的考試</h2>
-  
-    <p>無需要注意的考試</p>
+    <p>本週無顯著落後科目，表現良好。</p>
   
 
-  <p><a href="113441.pdf" download>下載完整 PDF</a></p>
+  <h2>需要持續關注的科目 (長期趨勢)</h2>
+  
+    <p>近期各科表現穩定。</p>
+  
+
+  <p style="margin-top: 50px; font-size: 0.9em; color: #666;">
+      <a href="113441.pdf" download style="text-decoration: none; color: #337ab7;">下載完整 PDF 報告</a>
+  </p>
 </body>
 </html>
